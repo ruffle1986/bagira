@@ -11,6 +11,8 @@ deployment:
     commands:
       - >
         if [ -n "$RELEASE_TYPE" ]; then
+          git config --global user.email "ftamas.mail@gmail.com"
+          git config --global user.name "ruffle1986"
           npm version $RELEASE_TYPE;
           git push --tags $repo &> /dev/null;
         fi
