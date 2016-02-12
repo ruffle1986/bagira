@@ -1,0 +1,16 @@
+machine:
+  node:
+    version: 4.2.2
+deployment:
+  release:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    commands:
+      - npm release
+  tagging:
+    branch: master
+    commands:
+      - >
+        if [ -n "$RELEASE_TYPE" ]; then
+          npm version $RELEASE_TYPE;
+          git push --tags $repo &> /dev/null;
+        fi
