@@ -14,5 +14,7 @@ deployment:
           git config --global user.email "ftamas.mail@gmail.com"
           git config --global user.name "ruffle1986"
           npm version $RELEASE_TYPE;
+          repo=https://$GITHUB_ACCESS_TOKEN@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git;
+          git push $repo master &> /dev/null;
           git push --tags $repo &> /dev/null;
         fi
